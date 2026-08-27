@@ -1,0 +1,1 @@
+Hello, my name is Nevin. I am studying at REVA University and currently in my 3rd semester. I have previously learned Python and am now broadening my programming knowledge by learning other languages, which will help me develop my coding skills for the future.
