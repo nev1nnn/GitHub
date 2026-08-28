@@ -2,27 +2,30 @@
 <html>
 <head>
     <title>My Portfolio</title>
-
-    <!-- Markdown converter -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
 
-    <div id="content">
-        Loading README...
-    </div>
+    <div id="content">Loading README...</div>
 
     <script>
-        fetch('README.md')
-            .then(response => response.text())
+        fetch('./README.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("README not found");
+                }
+                return response.text();
+            })
             .then(markdown => {
                 document.getElementById('content').innerHTML =
                     marked.parse(markdown);
             })
             .catch(error => {
                 document.getElementById('content').innerHTML =
-                    "Error loading README.md";
+                    "<h1>Error loading README.md</h1><p>" +
+                    error.message +
+                    "</p>";
             });
     </script>
 
