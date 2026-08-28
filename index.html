@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Programming Journey</title>
+    <title>My Portfolio</title>
+
+    <!-- Markdown converter -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
+
 <body>
-    <h1>My Programming Journey</h1>
 
-    <p>Hello, my name is Nevin. I am studying at REVA University and currently in my 3rd semester.</p>
+    <div id="content">
+        Loading README...
+    </div>
 
-    <h2>Projects</h2>
+    <script>
+        fetch('README.md')
+            .then(response => response.text())
+            .then(markdown => {
+                document.getElementById('content').innerHTML =
+                    marked.parse(markdown);
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML =
+                    "Error loading README.md";
+            });
+    </script>
 
-    <p>I am building and planning programming projects to improve my practical coding skills.</p>
 </body>
 </html>
